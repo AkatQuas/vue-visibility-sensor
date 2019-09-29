@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0
+
+- Refactor the `template` string into `render` function.
+
+## 0.2.0
+
+- Change the built bundle to only one SFC.
+
 ## 0.1.0
 
 - Refactor to be a Vue Component
