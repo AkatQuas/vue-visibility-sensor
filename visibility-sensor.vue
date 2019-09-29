@@ -90,7 +90,7 @@
       },
       offset: {
         type: Object,
-        default: {}
+        default: () => {},
         // should be
         // {
         //   top: Number,

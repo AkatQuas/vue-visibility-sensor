@@ -6,30 +6,6 @@ module.exports = env => {
   let entry;
   let output;
 
-  let externals = {
-    Vue: {
-      commonjs: 'vue',
-      commonjs2: 'vue',
-      amd: 'vue',
-      root: 'vue'
-    }
-  };
-
-  if (env === 'production') {
-    entry = {
-      'visibility-sensor': './src/index.vue',
-      'visibility-sensor.min': './src/index.vue'
-    };
-
-    output = {
-      path: path.resolve(__dirname),
-      filename: '[name].js',
-      library: 'vue-visibility-sensor',
-      libraryTarget: 'umd',
-      globalObject: 'this'
-    };
-  }
-
   if (env === 'test') {
     entry = {
       bundle: './tests/visibility-sensor-spec.js'

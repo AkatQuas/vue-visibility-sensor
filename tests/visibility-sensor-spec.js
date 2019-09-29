@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import assert from 'assert';
-import VisibilitySensor from '../src/index.vue';
+import VisibilitySensor from '../visibility-sensor.vue';
 
 describe('VisibilitySensor', function () {
   var node;
