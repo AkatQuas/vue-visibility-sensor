@@ -1,5 +1,5 @@
 declare module "react-visibility-sensor" {
-  import * as React from "react";
+  import Vue from "vue";
 
   interface Shape {
     top?: number;
@@ -9,7 +9,6 @@ declare module "react-visibility-sensor" {
   }
 
   interface Props {
-    onChange?: (isVisible: boolean) => void;
     active?: boolean;
     partialVisibility?: boolean;
     offset?: Shape;
@@ -25,13 +24,11 @@ declare module "react-visibility-sensor" {
     containment?: any;
     delayedCall?: boolean;
     children?:
-      | React.ReactNode
-      | ((
-          args: { isVisible: boolean; visibilityRect?: Shape }
-        ) => React.ReactNode);
+      | HTMLElement
+      | Vue.Component
   }
 
-  const ReactVisibilitySensor: React.StatelessComponent<Props>;
+  const VueVisibilitySensor: Vue.Component<{ props: Props }>;
 
-  export default ReactVisibilitySensor;
+  export default VueVisibilitySensor;
 }
