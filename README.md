@@ -17,7 +17,7 @@ Example
 
 Try building an example yourself locally, here's another:
 
-[View the example](https://AkatQuas.github.io/react-visibility-sensor/)
+[View the example](https://AkatQuas.github.io/vue-visibility-sensor/)
 
 To run the example locally:
 
