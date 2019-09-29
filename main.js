@@ -1,7 +1,7 @@
 'use strict';
 
 import Vue from 'vue';
-import VisibilitySensor from '../visibility-sensor';
+import VisibilitySensor from '../src/index.vue';
 
 Vue.component('Example', {
   components: {
