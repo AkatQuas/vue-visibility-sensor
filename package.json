@@ -1,17 +1,15 @@
 {
   "name": "vue-visibility-sensor",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Sensor component for Vue that notifies you when it goes in or out of the window viewport.",
   "main": "visibility-sensor.vue",
   "files": [
-    "visibility-sensor.vue",
-    "lib/*"
+    "visibility-sensor.vue"
   ],
   "scripts": {
-    "build-example": "rm -rf example/dist && webpack --env=example",
-    "build-test": "webpack --env=test",
-    "publish-gh-pages": "npm run build-example && ./bin/publish-gh-pages",
-    "test": "npm run build-test && karma start --single-run"
+    "example": "rm -rf example/dist && webpack --env=example",
+    "publish-gh-pages": "npm run example && ./bin/publish-gh-pages",
+    "test": "webpack --env=test && karma start --single-run"
   },
   "keywords": [
     "vue",

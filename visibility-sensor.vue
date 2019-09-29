@@ -90,7 +90,8 @@
       },
       offset: {
         type: Object,
-        default: () => {},
+        default: () => {
+        }
         // should be
         // {
         //   top: Number,
@@ -286,10 +287,12 @@
         if (this.isVisible !== isVisible) {
           this.isVisible = isVisible;
           this.visibilityRect = visibilityRect;
+          this.$emit('change', isVisible);
         }
-        this.$emit('change', isVisible);
       }
     },
-    template: '<slot><span></span></slot>'
+    render(createElement, context) {
+      return this.$slots.default || createElement('div', { style: 'height: 1px; width: 100%;' });
+    },
   };
 </script>

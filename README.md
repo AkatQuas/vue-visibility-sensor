@@ -10,7 +10,7 @@ Install
 
 `npm install git+https://github.com/AkatQuas/vue-visibility-sensor`
 
-This component is recommended to use in Vue-cli SPA project.
+This component is recommended to use in Vue-cli SPA project. Because it doesn't build as any bundle like AMD or UMD. It's just a [single file component](./visibility-sensor.vue).
 
 Example
 ----
@@ -21,7 +21,7 @@ Try building an example yourself locally, here's another:
 
 To run the example locally:
 
-- `npm run build-example`
+- `npm run example`
 - open `example/index.html` in a browser
 
 General usage goes something like:
@@ -29,13 +29,30 @@ General usage goes something like:
 ```js
 const VisibilitySensor = require('vue-visibility-sensor');
 
+// with children
 new Vue({
   components: {
     VisibilitySensor,
   },
   template: `
     <VisibilitySensor @change="onChange">
-      <div>...content goes here...</div>
+      <div>...optional content goes here...</div>
+    </VisibilitySensor>
+  `,
+  methods: {
+    onChange(isVisible) {
+      console.log('Element is now %s', isVisible ? 'visible' : 'hidden');
+    }
+  }
+});
+
+// without children
+new Vue({
+  components: {
+    VisibilitySensor,
+  },
+  template: `
+    <VisibilitySensor @change="onChange">
     </VisibilitySensor>
   `,
   methods: {
