@@ -1,70 +1,65 @@
-const path = require("path");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = env => {
   let entry;
   let output;
 
   let externals = {
-    react: {
-      commonjs: "react",
-      commonjs2: "react",
-      amd: "React",
-      root: "React"
-    },
-    "react-dom": {
-      commonjs: "react-dom",
-      commonjs2: "react-dom",
-      amd: "ReactDOM",
-      root: "ReactDOM"
+    Vue: {
+      commonjs: 'vue',
+      commonjs2: 'vue',
+      amd: 'vue',
+      root: 'vue'
     }
   };
 
-  if (env === "production") {
+  if (env === 'production') {
     entry = {
-      "visibility-sensor": "./visibility-sensor.js",
-      "visibility-sensor.min": "./visibility-sensor.js"
+      'visibility-sensor': './src/index.vue',
+      'visibility-sensor.min': './src/index.vue'
     };
 
     output = {
-      path: path.resolve(__dirname, "dist"),
-      filename: "[name].js",
-      library: "react-visibility-sensor",
-      libraryTarget: "umd",
-      globalObject: "this"
+      path: path.resolve(__dirname),
+      filename: '[name].js',
+      library: 'vue-visibility-sensor',
+      libraryTarget: 'umd',
+      globalObject: 'this'
     };
   }
 
-  if (env === "test") {
+  if (env === 'test') {
     entry = {
-      bundle: "./tests/visibility-sensor-spec.jsx"
+      bundle: './tests/visibility-sensor-spec.js'
     };
 
     output = {
-      path: path.resolve(__dirname, "tests"),
-      filename: "[name].js"
+      path: path.resolve(__dirname, 'tests'),
+      filename: '[name].js'
     };
 
-    // we want React, ReactDOM included in the test bundle
+    // we want Vue included in the test bundle
     externals = {};
   }
 
-  if (env === "example") {
+  if (env === 'example') {
     entry = {
-      bundle: "./example/main.js"
+      bundle: './example/main.js'
     };
 
     output = {
-      path: path.resolve(__dirname, "example/dist"),
-      filename: "[name].js"
+      path: path.resolve(__dirname, 'example'),
+      filename: '[name].min.js'
     };
 
-    // we want React, ReactDOM included in the example bundle
+    // we want Vue included in the example bundle
     externals = {};
   }
 
   return {
-    mode: "production",
+    mode: 'production',
     entry: entry,
     output: output,
     optimization: {
@@ -77,20 +72,31 @@ module.exports = env => {
     module: {
       rules: [
         {
-          test: /\.jsx?$/,
+          test: /\.vue$/,
+          loader: 'vue-loader',
+          options: {
+            loaders: {
+              css: ['vue-style-loader', 'css-loader']
+            }
+          }
+        },
+        {
+          test: /\.js$/,
           exclude: /node_modules/,
           use: {
-            loader: "babel-loader"
+            loader: 'babel-loader'
           }
         }
       ]
     },
+    plugins: [
+      new VueLoaderPlugin()
+    ],
     resolve: {
       alias: {
-        react: path.resolve(__dirname, "./node_modules/react"),
-        "react-dom": path.resolve(__dirname, "./node_modules/react-dom")
+        'vue$': 'vue/dist/vue.esm.js'
       },
-      extensions: [".js", ".jsx"]
+      extensions: ['.vue', '.js']
     },
     externals: externals
   };

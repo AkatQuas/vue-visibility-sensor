@@ -1,5 +1,5 @@
 node_modules/*
 tests/bundle.js
 dist
-example/dist
+example/bundle*.js
 .idea/

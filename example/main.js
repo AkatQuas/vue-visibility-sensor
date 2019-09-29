@@ -1,63 +1,69 @@
-"use strict";
+'use strict';
 
-import React from "react";
-import ReactDOM from "react-dom";
-import VisibilitySensor from "../visibility-sensor";
+import Vue from 'vue';
+import VisibilitySensor from '../src/index.vue';
 
-class Example extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      msg: ""
+Vue.component('Example', {
+  components: {
+    VisibilitySensor
+  },
+  props: {
+    containment: {},
+    minTopValue: {},
+    partialVisibility: {},
+  },
+  data () {
+    return {
+      msg: ''
     };
-  }
+  },
+  methods: {
+    onChange (isVisible) {
+      this.msg = 'Element is now ' + (isVisible ? 'visible' : 'hidden');
+    }
+  },
+  template: `
+  <div>
+  <p class="msg">{{msg}}</p> 
+  <div class="before"></div>
+  <VisibilitySensor
+    scrollCheck
+    :scrollThrottle="100"
+    :intervalDelay="8000"
+    :containment="containment"
+    @change="onChange"
+    :minTopValue="minTopValue"
+    :partialVisibility="partialVisibility"
+  >
+    <div class="sensor" />
+  </VisibilitySensor>
+  <div class="after"></div>
+</div>`
+});
 
-  onChange = isVisible => {
-    this.setState({
-      msg: "Element is now " + (isVisible ? "visible" : "hidden")
-    });
-  };
+new Vue({
+  el: '#example-mount',
+  template: `<Example />`
+});
 
-  render() {
-    return (
-      <div>
-        <p className="msg">{this.state.msg}</p>
-        <div className="before" />
-        <VisibilitySensor
-          scrollCheck
-          scrollThrottle={100}
-          intervalDelay={8000}
-          containment={this.props.containment}
-          onChange={this.onChange}
-          minTopValue={this.props.minTopValue}
-          partialVisibility={this.props.partialVisibility}
-          offset={this.props.offset}
-        >
-          <div className="sensor" />
-        </VisibilitySensor>
-        <div className="after" />
-      </div>
-    );
-  }
-}
-
-ReactDOM.render(
-  React.createElement(Example),
-  document.getElementById("example")
-);
-
-var container = document.getElementById("example-container");
-var elem = container.querySelector(".inner");
+var container = document.getElementById('example-container');
 
 container.scrollTop = 320;
 container.scrollLeft = 320;
 
-ReactDOM.render(
-  React.createElement(Example, {
-    containment: container,
-    minTopValue: 10,
-    partialVisibility: true
-  }),
-  elem
-);
+new Vue({
+  el: '#inner-mount',
+  data () {
+    return {
+      containment: container
+    };
+  },
+  template: `
+  <Example
+    :minTopValue="10" 
+    partialVisibility
+    :containment="containment"
+  ></Example>
+  `
+});
+

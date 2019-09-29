@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.0
+
+- Refactor to be a Vue Component
+
+---
+
 ## 5.1.1
 
 - Upgrade outdated dependencies to resolve vulnerabilities ([#162](https://github.com/joshwnj/react-visibility-sensor/pull/162))
