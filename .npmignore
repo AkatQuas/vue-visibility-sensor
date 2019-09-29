@@ -1,1 +1,9 @@
 .git
+.babelrc
+.editorconfig
+karma.conf.js
+testconf.js
+webpack.config.js
+bin/*
+example/*
+tests/*
