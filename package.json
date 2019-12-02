@@ -4,7 +4,8 @@
   "description": "Sensor component for Vue that notifies you when it goes in or out of the window viewport.",
   "main": "visibility-sensor.vue",
   "files": [
-    "visibility-sensor.vue"
+    "visibility-sensor.vue",
+    "index.d.ts"
   ],
   "scripts": {
     "example": "rm -rf example/dist && webpack --env=example",
@@ -61,6 +62,5 @@
       "git add"
     ]
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }

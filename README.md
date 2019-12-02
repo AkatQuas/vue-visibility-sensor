@@ -8,9 +8,11 @@ Inspired by [React Visibility Sensor](https://github.com/joshwnj/react-visibilit
 Install
 ----
 
-`npm install git+https://github.com/AkatQuas/vue-visibility-sensor`
+`npm install vue-visibility-sensor`
 
-This component is recommended to use in Vue-cli SPA project. Because it doesn't build as any bundle like AMD or UMD. It's just a [single file component](./visibility-sensor.vue).
+This component is recommended to use in Vue-cli SPA project. Because it doesn't build as any bundle like AMD or UMD.
+
+It's just a [single file component](./visibility-sensor.vue).
 
 Example
 ----
