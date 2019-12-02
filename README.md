@@ -89,7 +89,7 @@ Props
 |resizeThrottle|`-1`| by specifying a value > -1, you are enabling throttle instead of the delay to trigger checks on resize event. Throttle supercedes delay.|
 |delayedCall|`false`| if is set to true, wont execute on page load ( prevents react apps triggering elements as visible before styles are loaded )|
 |containment| `window` | element to use as a viewport when checking visibility. Default behaviour is to use the browser window as viewport.|
-|children| `<span></span>` | can be a template or vue component|
+|<slot></slot>| `<span></span>` | can be a template or vue component|
 
 It's possible to use both `intervalCheck` and `scrollCheck` together. This means you can detect most visibility changes quickly with `scrollCheck`, and an `intervalCheck` with a higher `intervalDelay` will act as a fallback for other visibility events, such as resize of a container.
 
