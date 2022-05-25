@@ -1,5 +1,7 @@
-Vue Visibility Sensor
+Vue Visibility Sensor ![Weekly downloads](https://img.shields.io/npm/dw/vue-visibility-sensor.svg) ![Yearly downloads](https://img.shields.io/npm/dy/vue-visibility-sensor.svg)
 ====
+
+[![NPM](https://nodei.co/npm/vue-visibility-sensor.png)](https://www.npmjs.com/package/vue-visibility-sensor)
 
 Sensor component for Vue that notifies you when it goes in or out of the window viewport.
 
